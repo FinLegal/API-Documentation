@@ -20,7 +20,7 @@ Client notes have a type and are attributed to clients.
 
 ### Client activities
 
-Activities are combined into workflows, which are governed by workflow rules that determine the user experience.
+Activities are combined into workflows, which are governed by workflow rules that determine the portal user experience.
 
 Activities are attached to clients and typically enable clients to complete a user experience in the client portal. Accordingly, they store (as activity attributes) values for automation outcomes or values that are captured as part of client form fills in the portal user experience.
 
