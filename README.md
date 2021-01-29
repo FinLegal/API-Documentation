@@ -1,6 +1,6 @@
 # API Samples and Documentation
 
-This repository contains some code samples and notes for the CaseFunnel public API.  The main REST documentation should be considered the primary reference.
+This repository contains some code samples and notes for the CaseFunnel public API. The main REST documentation should be considered the primary reference.
 
 ## URLs
 
@@ -11,6 +11,10 @@ This repository contains some code samples and notes for the CaseFunnel public A
 ## Introduction
 
 Intro.md provides a brief overview of the main Casefunnel objects available via the API.
+
+## REST documentation
+
+https://api.casefunnel.co/docs/index.html?urls.primaryName=CaseFunnel%20Case%20API%20V1
 
 ## Roadmap
 
