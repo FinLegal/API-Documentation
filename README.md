@@ -10,7 +10,7 @@ This repository contains some code samples and notes for the CaseFunnel public A
 
 ## Introduction
 
-Intro.md provides a brief overview of the main casefunnel objects available via the API.
+Intro.md provides a brief overview of the main Casefunnel objects available via the API.
 
 ## Roadmap
 
