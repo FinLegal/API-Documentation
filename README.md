@@ -7,3 +7,13 @@ This repository contains some code samples and notes for the CaseFunnel public A
 - <https://api.uk.casefunnel.io> - UK (London)
 - <https://api.au.casefunnel.io> - Australia (Sydney)
 - <https://api.casefunnel.co> - deprecated.  Do Not Use.
+
+## Introduction
+
+Intro.md provides a brief overview of the main casefunnel objects available via the API.
+
+## Roadmap
+
+###Q1 2021
+
+Webhook for new clients and client changes
