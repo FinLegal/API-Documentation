@@ -14,6 +14,6 @@ Intro.md provides a brief overview of the main casefunnel objects available via 
 
 ## Roadmap
 
-###Q1 2021
+### Q1 2021
 
-Webhook for new clients and client changes
+Webhook for new clients and client changes.
