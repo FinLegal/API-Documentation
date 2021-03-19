@@ -17,8 +17,4 @@ This repository contains some code samples and notes for the CaseFunnel public A
 
 https://api.casefunnel.co/docs/index.html?urls.primaryName=CaseFunnel%20Case%20API%20V1
 
-## Roadmap
 
-### Q1 2021
-
-Webhook for new clients and client changes.
