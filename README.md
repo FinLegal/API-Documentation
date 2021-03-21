@@ -15,6 +15,6 @@ This repository contains some code samples and notes for the CaseFunnel public A
 
 ## REST documentation
 
-https://api.casefunnel.co/docs/index.html?urls.primaryName=CaseFunnel%20Case%20API%20V1
+https://api.uk.casefunnel.io/docs/index.html?urls.primaryName=CaseFunnel%20Case%20API%20V1
 
 
