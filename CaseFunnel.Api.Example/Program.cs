@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Flurl.Http;
 
@@ -20,6 +21,17 @@ var activities = await HttpGetJsonAsync<List<Activity>>($"clients/{client.Items[
 var notes = await HttpGetJsonAsync<PagedList<ClientNote>>($"clients/{client.Items[0].Id}/notes");
 
 
+//upload a file to a client
+using var fileStream = System.IO.File.OpenRead("test.txt");
+
+var fileMetadata = await $"{baseUrl}/funnel/v1/cases/{caseId}/clients/{client.Items[0].Id}/files"
+    .WithHeader("X-Api-Key", apiKey)
+    .WithHeader("X-file-name", "test.txt")
+    .WithHeader("X-file-type", "application/txt")
+    .WithHeader("Content-Length", fileStream.Length)
+    .PostAsync(new StreamContent(fileStream));
+
+
 async Task<T> HttpGetJsonAsync<T>(string path)
 {
     return await $"{baseUrl}/funnel/v1/cases/{caseId}/{path}"
@@ -35,16 +47,7 @@ public class PagedList<T>
     public int ItemsCount { get; set; }
 }
 
-public class ClientNote
-{
-    public Guid Id { get; set; }
-    public DateTime CreationDateTime { get; set; }
-    
-    public Guid ClientId { get; set; }
-    public string Type { get; set; }
-    public string Text { get; set; }
-    
-}
+public record ClientNote(Guid Id, DateTime CreationDateTime, Guid ClientId, string Type, string Text);
 public class Client
 {
     public Guid Id { get; set; }
@@ -66,15 +69,8 @@ public class Client
     public List<string> ServiceConsents { get; set; }
 }
 
-public class Address 
-{
-    public string AddressLine1 { get; set; }
-    public string AddressLine2 { get; set; }
-    public string City { get; set; }
-    public string State { get; set; }
-    public string Country { get; set; }
-    public string PostCode { get; set; }
-}
+public record Address(string AddressLine1, string AddressLine2, string City, string State, string Country,
+    string PostCode);
 
 public abstract class Attribute
 {
@@ -105,3 +101,5 @@ public class Activity
     public string Status { get; set; }
     public List<ActivityAttribute> Attributes { get; set; } = new();
 }
+
+public record File(Guid Id, DateTime CreationDateTime, string Name, string ShareType, string ContentType, long Length, Guid? ActivityId);
