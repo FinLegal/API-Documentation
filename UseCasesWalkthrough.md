@@ -2,10 +2,12 @@
 
 Here are a few common scenarios that consumers of our API typically implement. The aim here is to provide examples of the order in which API calls can be made to satisfy basic use cases. As an integrator you will work with a Case Funnel customer to define the use case(s) before implementing any API calls.
 
-For the purposes of this walkthrough we will use the following ficticious claim:
+For the purposes of this walkthrough we will use the following fictitious claim:
 * Our claim contains four activities
 * Activities are configured in a workflow where: Activity 1 -> Activity 2 -> Activity 3
 * Activity 4 is assigned, by a case handler, as and when it is required and is not assigned through workflow
+
+**Note:** All id's (uuid's) shown in the examples below are fictitious. And also be aware id's are environment & claim specific.
 
 ## Use Case: Creating a client & redirecting them to step 1 of the claims process
 *Expectation:* You have captured some basic information about the client (email & name) & now wish to refer them to a claims site so they complete the remaining three activities of the claim.
@@ -91,7 +93,7 @@ In the response you will receive a `clientId`. You may want to save this in your
         }
     **Note**:  `activityTemplateId` is set to the `id` for activity 3 received in the previous step.
 
-4. Redirect the client using the redirect url you received in step 1. Now we require to you "back-fill" activities 1 & 2 so that case handlers can refer to this data in the Case Funnel dashboard.
+4. Redirect the client using the redirect url you received in step 1. Now we require to you "back-fill" activities 1 & 2 so that case handlers can refer to this data in the Case Funnel dashboard. We recommend making the following requests after you have redirected the client for the best client experience as this means you are not keeping the client waiting unnecessarily. 
 
 5. POST request to `/funnel/v1/cases/{caseId}/clients/{clientId}/activities`. Making this request will enable you to create activity 1 in CaseFunnel. As you are back-filling an activity you will need to also include any attributes as per the example below. CaseFunnel requires that you use the Submitted status to indicate this is a completed activity. Example request body:
 
