@@ -24,7 +24,7 @@ Activities are combined into workflows, which are governed by workflow rules tha
 
 Activities are attached to clients and typically enable clients to complete a user experience in the client portal. Accordingly, they store (as activity attributes) values for automation outcomes or values that are captured as part of client form fills in the portal user experience.
 
-Activities have a status of Open, Submitted, Accepted, On Hold, etc for claims handlers to review the information provided by clients so that they can accept/reject the information provided.
+Activities have a status of Open, Submitted, Accepted, Partially Accepted, On Hold, etc for claims handlers to review the information provided by clients so that they can accept/reject the information provided.
 
 #### Client activity attributes
 
