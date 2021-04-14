@@ -12,6 +12,8 @@ This first version of Webhook events fire everytime an Activity is created or up
 
 ## Notes
 - Your URL should be unique per case.  There is no case identifier in the payloads.
+- A 200-level response is expected.  Otherwise, it is considered an error and will be retried.
+- A event POST is only retried once.
 - Activities have two types: Claim and Case with slightly different payloads.  Both need to be handled.
 - `timestamp` is always GMT and in ISO-8601 format.
 - Valid values for `status`
