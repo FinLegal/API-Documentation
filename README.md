@@ -13,10 +13,12 @@ This repository contains some code samples and notes for the CaseFunnel public A
 
 [Intro](Intro.md) provides a brief overview of the main Casefunnel resources available via the API. Refer to our [walk-through guide for common use cases](UseCasesWalkthrough.md) using this API to get started.
 
+[Concepts and Data](concepts-and-data.md) provides an overview of the Casefunnel data model for Cases with the V2 API.
+
 ## REST documentation
 
-https://api.uk.casefunnel.io/docs/index.html?urls.primaryName=CaseFunnel%20Case%20API%20V1
-
+- [V2 (Current)](https://api.uk.casefunnel.io/docs/index.html?urls.primaryName=CaseFunnel%20Case%20API%20V2)
+- [V1 (Deprecated)](https://api.uk.casefunnel.io/docs/index.html?urls.primaryName=CaseFunnel%20Case%20API%20V1)
 
 ## Outgoing Webhook information
 

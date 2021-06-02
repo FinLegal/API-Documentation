@@ -3,6 +3,7 @@
 Here are a few common scenarios that consumers of our API typically implement. The aim here is to provide examples of the order in which API calls can be made to satisfy basic use cases. As an integrator you will work with a Case Funnel customer to define the use case(s) before implementing any API calls.
 
 For the purposes of this walkthrough we will use the following fictitious claim:
+
 * Our claim contains four activities
 * Activities are configured in a workflow where: Activity 1 -> Activity 2 -> Activity 3
 * Activity 4 is assigned, by a case handler, as and when it is required and is not assigned through workflow
@@ -10,17 +11,21 @@ For the purposes of this walkthrough we will use the following fictitious claim:
 **Note:** All id's (uuid's) shown in the examples below are fictitious. And also be aware id's are environment & claim specific.
 
 ## Use Case: Creating a client & redirecting them to step 1 of the claims process
+
 *Expectation:* You have captured some basic information about the client (email & name) & now wish to refer them to a claims site so they complete the remaining three activities of the claim.
 
 1. POST request to `/funnel/v1/cases/{caseId}/clients?leadRedirect=true`
 2. You will receive a response containing a redirect url which, when followed, will enable the client to begin the claims process at step 1
 
 ### Additional items to consider
+
 In the response you will receive a `clientId`. You may want to save this in your record system if you wish to push more data into Case Funnel as this is the method used to identify a client. The `clientId` can also be identified using the following API endpoints:
+
 * `GET /funnel/v1/cases/{caseId}/clients/by-phone/{phone}`
 * `GET /funnel/v1/cases/{caseId}/clients/by-email/{email}`
 
 ## Use Case: Creating a client & redirecting them to step 3 of the claims process
+
 *Expectation:* You have captured personal details about a client and details about the claim to satisfy activities 1 & 2 of the claim. You have agreed with a Case Funnel customer that the client will resume at activity 3.
 
 1. POST request to `/funnel/v1/cases/{caseId}/clients?leadRedirect=true`, keep hold of the response and do not redirect the client at this point.
@@ -93,7 +98,7 @@ In the response you will receive a `clientId`. You may want to save this in your
         }
     **Note**:  `activityTemplateId` is set to the `id` for activity 3 received in the previous step.
 
-4. Redirect the client using the redirect url you received in step 1. Now we require to you "back-fill" activities 1 & 2 so that case handlers can refer to this data in the Case Funnel dashboard. We recommend making the following requests after you have redirected the client for the best client experience as this means you are not keeping the client waiting unnecessarily. 
+4. Redirect the client using the redirect url you received in step 1. Now we require to you "back-fill" activities 1 & 2 so that case handlers can refer to this data in the Case Funnel dashboard. We recommend making the following requests after you have redirected the client for the best client experience as this means you are not keeping the client waiting unnecessarily.
 
 5. POST request to `/funnel/v1/cases/{caseId}/clients/{clientId}/activities`. Making this request will enable you to create activity 1 in CaseFunnel. As you are back-filling an activity you will need to also include any attributes as per the example below. CaseFunnel requires that you use the Submitted status to indicate this is a completed activity. Example request body:
 
