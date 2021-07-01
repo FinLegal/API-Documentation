@@ -63,7 +63,7 @@ This first version of Webhook events fire every time an Activity is created or u
     "claimId": "5bd3c355-4221-41a3-a0bf-564a5944a374",
     "attributeId": "a7167f2d-6ae5-4417-b9d4-a42c21d3b951",
     "status": "Submitted",
-    "type": "Claim Attribute""
+    "type": "ClaimAttribute"
 }
 ```
 
@@ -76,7 +76,7 @@ This first version of Webhook events fire every time an Activity is created or u
     "companyId": "886d87ff-eedb-4f40-8d05-e50bfc8ae346",
     "attributeId": "d80b61a9-2066-498a-9803-2b6ab77a5f77",
     "status": "Open",
-    "type": "Contact Attribute"
+    "type": "ContactAttribute"
 }
 ```
 
@@ -88,7 +88,7 @@ This first version of Webhook events fire every time an Activity is created or u
     "caseId": "8d30cc21-8e21-45df-96a1-47578d7de26c",
     "attributeId": "d80b61a9-2066-498a-9803-2b6ab77a5f77",
     "status": "Open",
-    "type": "Case Attribute"
+    "type": "CaseAttribute"
 }
 ```
 
@@ -101,6 +101,6 @@ This first version of Webhook events fire every time an Activity is created or u
     "activityId": "d80b61a9-2066-498a-9803-2b6ab77a5f77",
     "attributeId": "fd54fc38-8703-4640-902a-c98b8c3c6712",
     "status": "Open",
-    "type": "Activity Attribute"
+    "type": "ActivityAttribute"
 }
 ```
