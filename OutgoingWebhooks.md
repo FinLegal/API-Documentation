@@ -3,14 +3,17 @@
 These are outgoing HTTP requests to an endpoint of a Case Administrator's choosing.  This is configured under Case Settings
 
 ## Version 1
-This first version of Webhook events fire everytime an Activity is created or updated.
+
+This first version of Webhook events fire every time an Activity is created or updated.
 
 ### Options
+
 - HTTP URL to send HTTP POSTS
 - optional payload for `Authorization` header for the HTTP URL
 - enable or disable the hook
 
 ## Notes
+
 - Your URL should be unique per case.  There is no case identifier in the payloads.
 - A 200-level response is expected.  Otherwise, it is considered an error and will be retried.
 - A event POST is only retried once.
@@ -18,16 +21,17 @@ This first version of Webhook events fire everytime an Activity is created or up
 - `timestamp` is always GMT and in ISO-8601 format.
 - Valid values for `status`
   - Unset
-  - Open, 
-  - Submitted, 
-  - UnderReview, 
-  - Accepted, 
-  - Rejected, 
-  - Deleted, 
+  - Open,
+  - Submitted,
+  - UnderReview,
+  - Accepted,
+  - Rejected,
+  - Deleted,
   - PartiallyAccepted
 
 ### Claim Activity Sample payload
-```
+
+``` json
 {
     "timestamp": "2021-04-13T08:58:50.232224Z",
     "claimId": "ee10a4b1-97a2-4d0c-a128-674201044eaf",
@@ -39,7 +43,8 @@ This first version of Webhook events fire everytime an Activity is created or up
 ```
 
 ### Case Activity Sample payload
-```
+
+``` json
 {
     "timestamp": "2021-04-13T08:58:50.232224Z",
     "contactId":"8d30cc21-8e21-45df-96a1-47578d7de26c",
@@ -47,5 +52,55 @@ This first version of Webhook events fire everytime an Activity is created or up
     "activityTemplateId": "0fe30be6-6ef4-4736-93e1-ac51da3010fc",
     "status": "Open",
     "type": "Case"
+}
+```
+
+### Claim Attribute Change Sample payload
+
+``` json
+{
+    "timestamp": "2021-04-13T08:58:50.232224Z",
+    "claimId": "5bd3c355-4221-41a3-a0bf-564a5944a374",
+    "attributeId": "a7167f2d-6ae5-4417-b9d4-a42c21d3b951",
+    "status": "Submitted",
+    "type": "ClaimAttribute"
+}
+```
+
+### Contact Attribute Updated Sample payload
+
+``` json
+{
+    "timestamp": "2021-04-13T08:58:50.232224Z",
+    "contactId":"8d30cc21-8e21-45df-96a1-47578d7de26c",
+    "companyId": "886d87ff-eedb-4f40-8d05-e50bfc8ae346",
+    "attributeId": "d80b61a9-2066-498a-9803-2b6ab77a5f77",
+    "status": "Open",
+    "type": "ContactAttribute"
+}
+```
+
+### Case Attribute Updated Sample payload
+
+``` json
+{
+    "timestamp": "2021-04-13T08:58:50.232224Z",
+    "caseId": "8d30cc21-8e21-45df-96a1-47578d7de26c",
+    "attributeId": "d80b61a9-2066-498a-9803-2b6ab77a5f77",
+    "status": "Open",
+    "type": "CaseAttribute"
+}
+```
+
+### Activity Attribute Updated Sample payload
+
+``` json
+{
+    "timestamp": "2021-04-13T08:58:50.232224Z",
+    "caseId": "8d30cc21-8e21-45df-96a1-47578d7de26c",
+    "activityId": "d80b61a9-2066-498a-9803-2b6ab77a5f77",
+    "attributeId": "fd54fc38-8703-4640-902a-c98b8c3c6712",
+    "status": "Open",
+    "type": "ActivityAttribute"
 }
 ```
