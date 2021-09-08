@@ -17,6 +17,15 @@ This first version of Webhook events fire every time an Activity is created or u
 - Your URL should be unique per case.  There is no case identifier in the payloads.
 - A 200-level response is expected.  Otherwise, it is considered an error and will be retried.
 - A event POST is only retried once.
+- Types:
+- ActivityChange
+  - ClaimAttributeChange
+  - CaseAttributeChange
+  - ContactAttributeChange
+  - ActivityAttributeChange
+  - ClaimStatusChange
+        
+## Activity Change
 - Activities have two types: Claim and Case with slightly different payloads.  Both need to be handled.
 - `timestamp` is always GMT and in ISO-8601 format.
 - Valid values for `status`
@@ -54,6 +63,8 @@ This first version of Webhook events fire every time an Activity is created or u
     "type": "Case"
 }
 ```
+
+## Attribute Changes
 
 ### Claim Attribute Change Sample payload
 
@@ -102,5 +113,19 @@ This first version of Webhook events fire every time an Activity is created or u
     "attributeId": "fd54fc38-8703-4640-902a-c98b8c3c6712",
     "status": "Open",
     "type": "ActivityAttribute"
+}
+```
+
+## Claim Status Changes
+
+### Claim Status Changed Sample payload
+
+``` json
+{
+    "timestamp":"2021-09-08T14:22:20.361415Z",
+    "caseId": "8d30cc21-8e21-45df-96a1-47578d7de26c",
+    "claimId":"73b5c8d9-2810-4799-a405-1c99d3cd658e",
+    "claimStatusId":"61c813df-071f-430f-9d8c-37c75abdc0fd",
+    "claimStatusName":"Provided technical fix"
 }
 ```
