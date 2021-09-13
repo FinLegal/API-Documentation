@@ -85,7 +85,6 @@ This first version of Webhook events fire every time an Activity is created or u
 ``` json
 {
     "timestamp": "2021-04-13T08:58:50.232224Z",
-    "caseId": "8d30cc21-8e21-45df-96a1-47578d7de26c",
     "contactId":"8d30cc21-8e21-45df-96a1-47578d7de26c",
     "companyId": "886d87ff-eedb-4f40-8d05-e50bfc8ae346",
     "attributeId": "d80b61a9-2066-498a-9803-2b6ab77a5f77",
