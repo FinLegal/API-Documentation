@@ -42,7 +42,8 @@ This first version of Webhook events fire every time an Activity is created or u
 
 ``` json
 {
-    "timestamp": "2021-04-13T08:58:50.232224Z",
+    "timestamp": "2021-04-13T08:58:50.232224Z",    
+    "caseId": "8d30cc21-8e21-45df-96a1-47578d7de26c",
     "claimId": "ee10a4b1-97a2-4d0c-a128-674201044eaf",
     "activityId": "1315f728-6753-479d-8436-7212931ae9be",
     "activityTemplateId": "0fe30be6-6ef4-4736-93e1-ac51da3010fc",
@@ -56,6 +57,7 @@ This first version of Webhook events fire every time an Activity is created or u
 ``` json
 {
     "timestamp": "2021-04-13T08:58:50.232224Z",
+    "caseId": "8d30cc21-8e21-45df-96a1-47578d7de26c",
     "contactId":"8d30cc21-8e21-45df-96a1-47578d7de26c",
     "activityId": "1315f728-6753-479d-8436-7212931ae9be",
     "activityTemplateId": "0fe30be6-6ef4-4736-93e1-ac51da3010fc",
@@ -71,6 +73,7 @@ This first version of Webhook events fire every time an Activity is created or u
 ``` json
 {
     "timestamp": "2021-04-13T08:58:50.232224Z",
+    "caseId": "8d30cc21-8e21-45df-96a1-47578d7de26c",
     "claimId": "5bd3c355-4221-41a3-a0bf-564a5944a374",
     "attributeId": "a7167f2d-6ae5-4417-b9d4-a42c21d3b951",
     "type": "ClaimAttribute"
@@ -82,6 +85,7 @@ This first version of Webhook events fire every time an Activity is created or u
 ``` json
 {
     "timestamp": "2021-04-13T08:58:50.232224Z",
+    "caseId": "8d30cc21-8e21-45df-96a1-47578d7de26c",
     "contactId":"8d30cc21-8e21-45df-96a1-47578d7de26c",
     "companyId": "886d87ff-eedb-4f40-8d05-e50bfc8ae346",
     "attributeId": "d80b61a9-2066-498a-9803-2b6ab77a5f77",
@@ -94,6 +98,7 @@ This first version of Webhook events fire every time an Activity is created or u
 ``` json
 {
     "timestamp": "2021-04-13T08:58:50.232224Z",
+    "caseId": "8d30cc21-8e21-45df-96a1-47578d7de26c",
     "contactId": "8d30cc21-8e21-45df-96a1-47578d7de26c",
     "attributeId": "d80b61a9-2066-498a-9803-2b6ab77a5f77",
     "type": "CaseAttribute"
@@ -105,6 +110,7 @@ This first version of Webhook events fire every time an Activity is created or u
 ``` json
 {
     "timestamp": "2021-04-13T08:58:50.232224Z",
+    "caseId": "8d30cc21-8e21-45df-96a1-47578d7de26c",
     "activityId": "d80b61a9-2066-498a-9803-2b6ab77a5f77",
     "attributeId": "fd54fc38-8703-4640-902a-c98b8c3c6712",
     "type": "ActivityAttribute"
@@ -118,6 +124,7 @@ This first version of Webhook events fire every time an Activity is created or u
 ``` json
 {
     "timestamp":"2021-09-08T14:22:20.361415Z",
+    "caseId": "8d30cc21-8e21-45df-96a1-47578d7de26c",
     "claimId":"73b5c8d9-2810-4799-a405-1c99d3cd658e",
     "claimStatusId":"61c813df-071f-430f-9d8c-37c75abdc0fd",
     "claimStatusName":"Provided technical fix"
