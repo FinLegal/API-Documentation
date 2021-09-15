@@ -14,15 +14,19 @@ This first version of Webhook events fire every time an Activity is created or u
 
 ## Notes
 
-- Your URL should be unique per case.  There is no case identifier in the payloads.
-- A 200-level response is expected.  Otherwise, it is considered an error and will be retried.
-- A event POST is only retried once.
-- Types:
-- ActivityChange
+- Your URL should be unique per case.  
+- A 200-level response is expected.  Otherwise, it is considered an error and will be retried once in a few seconds.
+- A event is a POST
+
+Types:
+- Activity
+  - ActivityChange
+- Attribute changes
   - ClaimAttributeChange
   - CaseAttributeChange
   - ContactAttributeChange
   - ActivityAttributeChange
+- Claim Status
   - ClaimStatusChange
         
 ## Activity Change
