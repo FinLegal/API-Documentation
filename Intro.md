@@ -1,6 +1,8 @@
-## Overview
+## Overview 
 
-The example code provides the ability to return a given client by email address.
+This is intended for V1.  For V2 and more details see [Concepts and Data](concepts-and-data.md)
+
+The example code provides the ability to return a given client by email address. 
 
 ### Client personal attributes
 
