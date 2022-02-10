@@ -28,6 +28,9 @@ Types:
   - ActivityAttributeChange
 - Claim Status
   - ClaimStatusChange
+- Document
+  - DocumentCreated
+  - DocumentUpdated
         
 ## Activity Change
 - Activities have two types: Claim and Case with slightly different payloads.  Both need to be handled.
@@ -131,5 +134,31 @@ Types:
     "claimId":"73b5c8d9-2810-4799-a405-1c99d3cd658e",
     "claimStatusId":"61c813df-071f-430f-9d8c-37c75abdc0fd",
     "claimStatusName":"Provided technical fix"
+}
+```
+
+## Document Changes
+
+### Document Created Sample Payload
+
+``` json
+{
+    "timestamp":"2021-09-08T14:22:20.361415Z",
+    "caseId": "8d30cc21-8e21-45df-96a1-47578d7de26c",
+    "claimId":"73b5c8d9-2810-4799-a405-1c99d3cd658e", // optional - empty, when document is against case activity
+    "activityId":"61c813df-071f-430f-9d8c-37c75abdc0fd", // optional - empty, when document is against claim
+    "documentId":"9ff80a49-cc30-4c53-8d37-4c481e905d6c"
+}
+```
+
+### Document Updated Sample Payload
+
+``` json
+{
+    "timestamp":"2021-09-08T14:22:20.361415Z",
+    "caseId": "8d30cc21-8e21-45df-96a1-47578d7de26c",
+    "claimId":"73b5c8d9-2810-4799-a405-1c99d3cd658e", // optional - empty, when document is against case activity
+    "activityId":"61c813df-071f-430f-9d8c-37c75abdc0fd", // optional - empty, when document is against claim
+    "documentId":"9ff80a49-cc30-4c53-8d37-4c481e905d6c"
 }
 ```
