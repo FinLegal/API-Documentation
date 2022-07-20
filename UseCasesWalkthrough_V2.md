@@ -17,9 +17,39 @@ For the purposes of this walkthrough we will use the following fictitious claim:
 *Expectation:* You have captured some basic information about the client (email & name) & now wish to refer them to a claims site so they complete the remaining three activities of the claim.
 
 1. Create a Contact: POST request to `/funnel/v2/contacts`
-2. Create a Claim: POST request to `/funnel/v2/claims{claimId}`
-3. Create Activity 1: POST request to: `/funnel/v2/activities`
-4. Create Magic Link for redirect: POST request to: `/funnel/v2/contacts/{contactId}/magic-link`
+        a. Payload should look like:
+        {
+  "items": [
+    {
+      "gender": "NotSet",
+      "dateOfBirth": "1989-02-02T00:00:00Z",
+      "marketingConsents": [],
+      "serviceConsents": [],
+      "id": "08da6a19-3da4-4748-8518-065aa3060ca0",
+      "creationDateTime": "2022-07-20T06:29:46.730976Z",
+      "firstName": "aaa",
+      "lastName": "test",
+      "email": "princely.wanki+hp2007a@disputed.io",
+      "phone": "+447573988778",
+      "companyId": "cf99b1f1-ddce-4204-8d40-7773a0e10b66",
+      "contactType": "Individual",
+      "address": {
+        "addressLine1": "44 Planetary Road",
+        "addressLine2": "",
+        "city": "Willenhall",
+        "state": "England",
+        "country": "United Kingdom",
+        "postCode": "WV13 3XB"
+      }
+    }
+  ],
+  "pageSize": 100,
+  "page": 1,
+  "itemsCount": 1
+}
+3. Create a Claim: POST request to `/funnel/v2/claims{claimId}`
+4. Create Activity 1: POST request to: `/funnel/v2/activities`
+5. Create Magic Link for redirect: POST request to: `/funnel/v2/contacts/{contactId}/magic-link`
 
 #####################
 1. POST request to `/funnel/v1/cases/{caseId}/clients?leadRedirect=true`
