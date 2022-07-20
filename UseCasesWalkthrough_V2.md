@@ -16,9 +16,10 @@ For the purposes of this walkthrough we will use the following fictitious claim:
 
 *Expectation:* You have captured some basic information about the client (email & name) & now wish to refer them to a claims site so they complete the remaining three activities of the claim.
 
-1. Create a Contact: POST request to `/funnel/v2/contacts`
+1. Create a Contact: POST request to `/funnel/v2/contacts?isAdministrator=true` **Note:** A Contact should by default be an administrator. 
+
         a. Payload should look like:
-      [
+     
       {
   "items": [
     {
@@ -48,15 +49,12 @@ For the purposes of this walkthrough we will use the following fictitious claim:
   "page": 1,
   "itemsCount": 1
 }
-]
 
-3. Create a Claim: POST request to `/funnel/v2/claims{claimId}`
-4. Create Activity 1: POST request to: `/funnel/v2/activities`
-5. Create Magic Link for redirect: POST request to: `/funnel/v2/contacts/{contactId}/magic-link`
 
-#####################
-1. POST request to `/funnel/v1/cases/{caseId}/clients?leadRedirect=true`
-2. You will receive a response containing a redirect url which, when followed, will enable the client to begin the claims process at step 1
+2. Create a Claim: POST request to `/funnel/v2/claims`
+3. Create Activity 1: POST request to: `/funnel/v2/activities?claimId={claimId}&contactId={contactId}` **Note:** Either create a Contact OR a Claim activity.
+4. Create Magic Link for redirect: POST request to: `/funnel/v2/contacts/{contactId}/magic-link`
+You will receive a response containing a redirect url which, when followed, will enable the client to begin the claims process at the first Open activity
 
 ### Additional items to consider
 
@@ -73,8 +71,8 @@ For the purposes of this walkthrough we will use the following fictitious claim:
 *Expectation:* You have captured personal details about a claimant and details about the claim to satisfy activities 1 & 2 of the claim. You have agreed with a FinLegal customer that the client will resume at activity 3.
 
 1. Create a Contact: POST request to `/funnel/v2/contacts`
-2. Create a Claim: POST request to `/funnel/v2/claims/{claimId}/clients?leadRedirect=true`, keep hold of the response and do NOT redirect the client at this point.
-3. Capture Activity template IDs: GET request to `/funnel/v2/activities`. Keep hold of this response as you will need to refer to it several times in the following steps. **Note:** Some data properties have been removed for brevity.
+2. Create a Claim: POST request to `/funnel/v2/claims`, keep hold of the response and do NOT redirect the client at this point.
+3. Capture Activity template IDs: GET request to `/funnel/v2/activity-templates`. Keep hold of this response as you will need to refer to it several times in the following steps. **Note:** Some data properties have been removed for brevity.
 
         [
           {
