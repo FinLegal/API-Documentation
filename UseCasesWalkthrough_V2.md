@@ -18,7 +18,8 @@ For the purposes of this walkthrough we will use the following fictitious claim:
 
 1. Create a Contact: POST request to `/funnel/v2/contacts`
         a. Payload should look like:
-        {
+      [
+      {
   "items": [
     {
       "gender": "NotSet",
@@ -47,6 +48,8 @@ For the purposes of this walkthrough we will use the following fictitious claim:
   "page": 1,
   "itemsCount": 1
 }
+]
+
 3. Create a Claim: POST request to `/funnel/v2/claims{claimId}`
 4. Create Activity 1: POST request to: `/funnel/v2/activities`
 5. Create Magic Link for redirect: POST request to: `/funnel/v2/contacts/{contactId}/magic-link`
