@@ -17,7 +17,7 @@ For the purposes of this walkthrough we will use the following fictitious claim:
 *Expectation:* You have captured some basic information about the client (email & name) & now wish to refer them to a claims site so they complete the remaining three activities of the claim.
 
 1. Create a Contact: POST request to `/funnel/v2/contacts`
-2. Create a Claim: POST request to `/funnel/v1/cases/{caseId}/clients`
+2. Create a Claim: POST request to `/funnel/v2/claims{claimId}`
 3. Create Activity 1: POST request to: `/funnel/v2/activities`
 4. Create Magic Link for redirect: POST request to: `/funnel/v2/contacts/{contactId}/magic-link`
 
@@ -27,20 +27,21 @@ For the purposes of this walkthrough we will use the following fictitious claim:
 
 ### Additional items to consider
 
-In the response to the first POST (1.) you will receive a `contactID`. This `contactID` must be used to create a claim (2.). 
-In the response to the second POST (2.) you will receive a `claimID`. 
-You may want to save both `contactID` and `claimID`s to your record system if you wish to push more data into FinLegal or if you need to track activity completion by the claimant (via e.g. webhooks or GTM). 
-Case Funnel as this is the method used to identify a client. The `clientId` can also be identified using the following API endpoints:
+- In the response to the first POST (1.) you will receive a `contactID`. This `contactID` must be used to create a claim (2.). 
+- In the response to the second POST (2.) you will receive a `claimID`. 
+- You may want to save both `contactID` and `claimID`s to your record system if you wish to push more data into FinLegal or if you need to track activity completion by the claimant (via e.g. webhooks or GTM). 
+- The `claimId` can also be identified using the following API endpoints:
 
-* `GET /funnel/v1/cases/{caseId}/clients/by-phone/{phone}`
-* `GET /funnel/v1/cases/{caseId}/clients/by-email/{email}`
+* `GET /funnel/v2/contacts/by-email/{email}`
+* `GET /funnel/v2/contacts/by-phone/{phone}`
 
 ## Use Case: Creating a client & redirecting them to step 3 of the claims process
 
-*Expectation:* You have captured personal details about a client and details about the claim to satisfy activities 1 & 2 of the claim. You have agreed with a Case Funnel customer that the client will resume at activity 3.
+*Expectation:* You have captured personal details about a claimant and details about the claim to satisfy activities 1 & 2 of the claim. You have agreed with a FinLegal customer that the client will resume at activity 3.
 
-1. POST request to `/funnel/v1/cases/{caseId}/clients?leadRedirect=true`, keep hold of the response and do not redirect the client at this point.
-2. GET request to `/funnel/v1/cases/{caseId}/activity-templates`. Keep hold of this response as you will need to refer to it several times in the following steps. **Note:** Some data properties have been removed for brevity.
+1. Create a Contact: POST request to `/funnel/v2/contacts`
+2. Create a Claim: POST request to `/funnel/v2/claims/{claimId}/clients?leadRedirect=true`, keep hold of the response and do NOT redirect the client at this point.
+3. Capture Activity template IDs: GET request to `/funnel/v2/activities`. Keep hold of this response as you will need to refer to it several times in the following steps. **Note:** Some data properties have been removed for brevity.
 
         [
           {
@@ -101,7 +102,7 @@ Case Funnel as this is the method used to identify a client. The `clientId` can 
           }
         ]
 
-3. POST request to `/funnel/v1/cases/{caseId}/clients/{clientId}/activities`. To enable the client to begin at activity 3 we require you to create an activity where the status is set to Open. Example request body:
+4. Create and/or populate activities: POST request to `/funnel/v2/activities`. To enable the client to begin at activity 3 we require you to create an activity where the status is set to Open. Example request body:
 
         {
           "activityTemplateId": "04f907e7-07b7-4c13-92f9-d7501b9936c4",
@@ -109,9 +110,9 @@ Case Funnel as this is the method used to identify a client. The `clientId` can 
         }
     **Note**:  `activityTemplateId` is set to the `id` for activity 3 received in the previous step.
 
-4. Redirect the client using the redirect url you received in step 1. Now we require to you "back-fill" activities 1 & 2 so that case handlers can refer to this data in the Case Funnel dashboard. We recommend making the following requests after you have redirected the client for the best client experience as this means you are not keeping the client waiting unnecessarily.
+5. Redirect the client using the redirect url you received in step 2. Now we require to you "back-fill" activities 1 & 2 so that case handlers can refer to this data in the Case Funnel dashboard. We recommend making the following requests after you have redirected the client for the best client experience as this means you are not keeping the client waiting unnecessarily.
 
-5. POST request to `/funnel/v1/cases/{caseId}/clients/{clientId}/activities`. Making this request will enable you to create activity 1 in CaseFunnel. As you are back-filling an activity you will need to also include any attributes as per the example below. CaseFunnel requires that you use the Submitted status to indicate this is a completed activity. Example request body:
+6. POST request to `/funnel/v2/activities`. Making this request will enable you to create activity 1 in CaseFunnel. As you are back-filling an activity you will need to also include any attributes as per the example below. CaseFunnel requires that you use the Submitted status to indicate this is a completed activity. Example request body:
 
         {
           "activityTemplateId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
