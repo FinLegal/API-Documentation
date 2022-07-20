@@ -12,7 +12,7 @@ For the purposes of this walkthrough we will use the following fictitious claim:
 
 **Note:** All id's (uuid's) shown in the examples below are fictitious. And also be aware id's are environment & claim specific.
 
-## Use Case: Capturing basic claimant information and  & redirecting them to step 1 of the claims process
+## Use Case: Capturing basic claimant information & redirecting them to step 1 of the claims process
 
 *Expectation:* You have captured some basic information about the client (email & name) & now wish to refer them to a claims site so they complete the remaining three activities of the claim.
 
@@ -27,7 +27,10 @@ For the purposes of this walkthrough we will use the following fictitious claim:
 
 ### Additional items to consider
 
-In the response you will receive a `clientId`. You may want to save this in your record system if you wish to push more data into Case Funnel as this is the method used to identify a client. The `clientId` can also be identified using the following API endpoints:
+In the response to the first POST (1.) you will receive a `contactID`. This `contactID` must be used to create a claim (2.). 
+In the response to the second POST (2.) you will receive a `claimID`. 
+You may want to save both `contactID` and `claimID`s to your record system if you wish to push more data into FinLegal or if you need to track activity completion by the claimant (via e.g. webhooks or GTM). 
+Case Funnel as this is the method used to identify a client. The `clientId` can also be identified using the following API endpoints:
 
 * `GET /funnel/v1/cases/{caseId}/clients/by-phone/{phone}`
 * `GET /funnel/v1/cases/{caseId}/clients/by-email/{email}`
