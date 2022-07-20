@@ -37,7 +37,7 @@ You will receive a response containing a redirect url which, when followed, will
 *Expectation:* You have captured personal details about a claimant and details about the claim to satisfy activities 1 & 2 of the claim. You have agreed with a FinLegal customer that the client will resume at activity 3.
 
 1. Create a Contact: POST request to `/funnel/v2/contacts`
-2. Create a Claim: POST request to `/funnel/v2/claims`, keep hold of the response and do NOT redirect the client at this point.
+2. Create a Claim: POST request to `/funnel/v2/claims`, 
 3. Create Magic Link for redirect: POST request to: `/funnel/v2/contacts/{contactId}/magic-link`. Keep hold of this URL - you will not need it quite yet.
 4. Capture Activity template IDs: GET request to `/funnel/v2/activity-templates`. Keep hold of this response as you will need to refer to it several times in the following steps. **Note:** Some data properties have been removed for brevity.
 
@@ -100,17 +100,7 @@ You will receive a response containing a redirect url which, when followed, will
           }
         ]
 
-4. Create and/or populate activities: POST request to `/funnel/v2/activities`. To enable the client to begin at activity 3 we require you to create an activity where the status is set to Open. Example request body:
-
-        {
-          "activityTemplateId": "04f907e7-07b7-4c13-92f9-d7501b9936c4",
-          "status": "Open"
-        }
-    **Note**:  `activityTemplateId` is set to the `id` for activity 3 received in the previous step.
-
-5. Redirect the client using the redirect url you received in step 3. Now we require to you "back-fill" activities 1 & 2 so that case handlers can refer to this data in the Case Funnel dashboard. We recommend making the following requests after you have redirected the client for the best client experience as this means you are not keeping the client waiting unnecessarily.
-
-6. POST request to `/funnel/v2/activities`. Making this request will enable you to create activity 1 in CaseFunnel. As you are back-filling an activity you will need to also include any attributes as per the example below. CaseFunnel requires that you use the Submitted status to indicate this is a completed activity. Example request body:
+5. POST request to `/funnel/v2/activities`. Making this request will enable you to create activity 1 in CaseFunnel. As you are back-filling an activity you will need to also include any attributes as per the example below. CaseFunnel requires that you use the Submitted status to indicate this is a completed activity. Example request body:
 
         {
           "activityTemplateId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
@@ -129,7 +119,7 @@ You will receive a response containing a redirect url which, when followed, will
 
     **Note**: `activityAttributeTemplateId` is set to the `id` for the attribute you wish to set. The attribute is listed in the `activityAttributeTemplates` section of the response received in step 2. See the attributes: Attribute 1-1 & Attribute 1-2.
 
-7. POST request to `/funnel/v2/activities`. Now you will need to back-fill activity 2 in the same way as you did activity 1 in the previous step. Example request body:
+6. POST request to `/funnel/v2/activities`. Now you will need to back-fill activity 2 in the same way as you did activity 1 in the previous step. Example request body:
 
         {
           "activityTemplateId": "f24044b5-3ba5-4356-a3c0-301bdd4f9379",
@@ -145,3 +135,15 @@ You will receive a response containing a redirect url which, when followed, will
             }
           ],
         }
+        
+ 7. Create and/or populate activities: POST request to `/funnel/v2/activities`. To enable the client to begin at activity 3 we require you to create an activity where the status is set to Open. Example request body:
+
+        {
+          "activityTemplateId": "04f907e7-07b7-4c13-92f9-d7501b9936c4",
+          "status": "Open"
+        }
+    **Note**:  `activityTemplateId` is set to the `id` for activity 3 received in the previous step.
+
+8. Redirect the client using the redirect url you received in step 3. 
+
+
