@@ -7,8 +7,8 @@ Here are a few common scenarios that consumers of our API typically implement. T
 For the purposes of this walkthrough we will use the following fictitious claim:
 
 * Our claim contains four activities
-* Activities are configured in a workflow where: Activity 1 -> Activity 2 -> Activity 3
-* Activity 4 is assigned, by a case handler, as and when it is required and is not assigned through workflow
+* Activities are configured in a workflow where: Activity 1 -> Activity 2
+* Activity 3 is assigned, by a case handler, as and when it is required and is not assigned through workflow
 
 **Note:** All id's (uuid's) shown in the examples below are fictitious. And also be aware id's are environment & claim specific.
 
