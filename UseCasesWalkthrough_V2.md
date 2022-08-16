@@ -103,40 +103,40 @@ You will receive a response containing a redirect url which, when followed, will
 5. POST request to `/funnel/v2/activities`. Making this request will enable you to create activity 1 in CaseFunnel. As you are back-filling an activity you will need to also include any attributes as per the example below. CaseFunnel requires that you use the Submitted status to indicate this is a completed activity. Example request body:
 
         {
-          "activityTemplateId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+          "templateId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", # Activity Template Id
           "status": "Submitted",
           "attributes": [
             {
-              "activityAttributeTemplateId": "8c31c71a-0959-4926-9e0e-2cbcbf1cb574",
+              "templateId": "8c31c71a-0959-4926-9e0e-2cbcbf1cb574", # Activity Attribute Template Id
               "stringValue": "Lorem ipsum dolor"
             },
             {
-              "activityAttributeTemplateId": "c9634a59-a14c-4554-b1c4-a1569b740739",
+              "templateId": "c9634a59-a14c-4554-b1c4-a1569b740739", # Activity Attribute Template Id
               "stringValue": "Dolor ipsum"
             }
           ],
         }
 
-    **Note**: `activityAttributeTemplateId` is set to the `id` for the attribute you wish to set. The attribute is listed in the `activityAttributeTemplates` section of the response received in step 2. See the attributes: Attribute 1-1 & Attribute 1-2.
+    **Note**: Root `templateId` is set to the `id` for the activity template you wish to set, nested `templateId` is an Id of Attribute Template. The attribute is listed in the `activityAttributeTemplates` section of the response received in step 2. See the attributes: Attribute 1-1 & Attribute 1-2.
 
 6. POST request to `/funnel/v2/activities`. Now you will need to back-fill activity 2 in the same way as you did activity 1 in the previous step. Example request body:
 
         {
-          "activityTemplateId": "f24044b5-3ba5-4356-a3c0-301bdd4f9379",
+          "templateId": "f24044b5-3ba5-4356-a3c0-301bdd4f9379",
           "status": "Submitted",
           "attributes": [
             {
-              "activityAttributeTemplateId": "22697147-5af4-43a8-8719-fecbc5eb083e",
+              "templateId": "22697147-5af4-43a8-8719-fecbc5eb083e",
               "dateTimeValue": "2021-04-13T06:44:42.322Z",
             },
             {
-              "activityAttributeTemplateId": "f6322b5b-387a-4203-af32-09eac9a92859",
+              "templateId": "f6322b5b-387a-4203-af32-09eac9a92859",
               "stringValue": "2017-09-08T19:01:55.0+03:00"
             }
           ],
         }
         
- 7. Create and/or populate activities: POST request to `/funnel/v2/activities`. To enable the client to begin at activity 3 we require you to create an activity where the status is set to Open. Example request body:
+ 7. Create activities: POST request to `/funnel/v2/activities`. To enable the client to begin at activity 3 we require you to create an activity where the status is set to Open. Example request body:
 
         {
           "activityTemplateId": "04f907e7-07b7-4c13-92f9-d7501b9936c4",
