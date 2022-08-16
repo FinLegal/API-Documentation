@@ -142,7 +142,7 @@ You will receive a response containing a redirect url which, when followed, will
           "activityTemplateId": "04f907e7-07b7-4c13-92f9-d7501b9936c4",
           "status": "Open"
         }
-    **Note**:  `activityTemplateId` is set to the `id` for activity 3 received in the previous step.
+    **Note**:  `templateId` is set to the `id` for activity 3 received in the previous step.
 
 8. Redirect the client using the redirect url you received in step 3. 
 
