@@ -6,7 +6,7 @@ This repository contains some code samples and notes for the CaseFunnel public A
 
 - <https://api.uk.casefunnel.io> - UK (London)
 - <https://api.au.casefunnel.io> - Australia (Sydney)
-- <https://api.us.casefunnel.io> - USA (Ohio)
+- <https://api.us.casefunnel.io> - United States (Ohio)
 - <https://api.casefunnel.co> - deprecated.  Do Not Use.  Alternate URL for London.
 - <https://api.casefunnel.io> - deprecated.  Do Not Use.  Alternate URL for London.
 
