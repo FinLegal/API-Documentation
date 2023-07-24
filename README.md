@@ -38,5 +38,5 @@ You can import a specification of our API directly into Postman. Follow this gui
 
 Alternatively you can import one of the following JSON Postman collection files. Follow this guide on [Importing a collection](https://learning.postman.com/docs/getting-started/importing-and-exporting-data/#importing-postman-data). Please be aware that these files may become stale, using the method above is a sure fire way to import the latest specification of our APIs.
 
-- V2 - [CaseFunnel-V2.postman_collection.json](CaseFunnel-V2.postman_collection.json)
-- V1 - [CaseFunnel-V1.postman_collection.json](CaseFunnel-V1.postman_collection.json)
+- V2 - [CaseFunnel-V2.postman_collection.json](CaseFunnel-V2.postman_collection.json) - generated 24/07/2023
+- V1 - [CaseFunnel-V1.postman_collection.json](CaseFunnel-V1.postman_collection.json) - generated 24/07/2023
