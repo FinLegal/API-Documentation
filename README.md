@@ -24,3 +24,19 @@ This repository contains some code samples and notes for the CaseFunnel public A
 ## Outgoing Webhook information
 
 [Documentation](OutgoingWebhooks.md)
+
+## Testing with Postman
+
+### Importing an API specification
+
+You can import a specification of our API directly into Postman. Follow this guide on [Importing an API](https://learning.postman.com/docs/designing-and-developing-your-api/importing-an-api/#importing-api-definitions). The link to the API specification you will require are listed below.
+
+- V2 - https://api.casefunnel.io/docs/funnel-v2.json
+- V1 - https://api.casefunnel.io/docs/funnel-v1.json
+
+### Importing a Postman collection
+
+Alternatively you can import one of the following JSON Postman collection files. Follow this guide on [Importing a collection](https://learning.postman.com/docs/getting-started/importing-and-exporting-data/#importing-postman-data). Please be aware that these files may become stale, using the method above is a sure fire way to import the latest specification of our APIs.
+
+- V2 - [CaseFunnel-V2.postman_collection.json](CaseFunnel-V2.postman_collection.json)
+- V1 - [CaseFunnel-V1.postman_collection.json](CaseFunnel-V1.postman_collection.json)
