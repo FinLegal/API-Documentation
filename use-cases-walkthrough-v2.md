@@ -6,7 +6,7 @@ Here are a few common scenarios that consumers of our API typically implement. T
 
 For the purposes of this walkthrough we will use the following fictitious claim:
 
-* Our claim contains four activities
+* Our claim contains three activities
 * Activities are configured in a workflow where: Activity 1 -> Activity 2
 * Activity 3 is assigned, by a case handler, as and when it is required and is not assigned through workflow
 
@@ -84,20 +84,6 @@ You will receive a response containing a redirect url which, when followed, will
       {
         "id": "571432b8-4016-42f3-a337-4017d6dd0e87",
         "name": "Attribute 3-2"
-      }
-    ]
-  },  
-  {
-    "id": "a0dfc61e-ace2-4f30-9547-642aaf1a9e48",
-    "name": "Activity 4",
-    "activityAttributeTemplates": [
-      {
-        "id": "2e9855d0-ea3f-4fbe-b5f4-b9030e4a90ef",
-        "name": "Attribute 4-1"
-      },
-      {
-        "id": "cfa1882a-4577-4666-aab3-a9e210f156ec",
-        "name": "Attribute 4-2"
       }
     ]
   }
