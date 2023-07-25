@@ -12,7 +12,7 @@ This repository contains code samples and notes for our public API. The [API ref
 
 ## Getting Started
 
-Refer to our [walk-through guide for common API use cases](UseCasesWalkthrough_V2.md) to get started. [Concepts and data](concepts-and-data-v2.md) provides guidance on the resources exposed by the API.
+Refer to our [walk-through guide for common API use cases](use-cases-walkthrough-v2.md) to get started. [Concepts and data](concepts-and-data-v2.md) provides guidance on the resources exposed by the API.
 
 (Deprecated) For an overview of the resources used by API V1, [follow this guide](concepts-and-data-v1.md).
 
