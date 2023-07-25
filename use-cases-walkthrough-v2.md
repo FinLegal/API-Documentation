@@ -41,7 +41,7 @@ You will receive a response containing a redirect url which, when followed, will
 3. Create Magic Link for redirect: POST request to: `/funnel/v2/contacts/{contactId}/magic-link`. Keep hold of this URL - you will not need it quite yet.
 4. Capture Activity template IDs: GET request to `/funnel/v2/activity-templates`. Keep hold of this response as you will need to refer to it several times in the following steps.
 
-**Note:** Some data properties have been removed for brevity.
+   **Note:** Some data properties have been removed for brevity.
 
 ```json
 [
@@ -109,14 +109,14 @@ You will receive a response containing a redirect url which, when followed, will
 }
 ```
 
-**Note** Attribute values vary based on the different data types they are:
+   **Note:** Attribute values vary based on the different data types they are:
 
 * `stringValue` Text, TextArea, DropDown,
 * `booValue` Checkbox
 * `dateTimeValue` Date, DateTime
 * `doubleValue` Number, Currency
 
-**Note**: Root `templateId` is set to the `id` for the activity template you wish to set, nested `templateId` is an Id of Attribute Template. The attribute is listed in the `activityAttributeTemplates` section of the response received in step 2. See the attributes: Attribute 1-1 & Attribute 1-2.
+   **Note:** Root `templateId` is set to the `id` for the activity template you wish to set, nested `templateId` is an Id of Attribute Template. The attribute is listed in the `activityAttributeTemplates` section of the response received in step 2. See the attributes: Attribute 1-1 & Attribute 1-2.
 
 6. POST request to `/funnel/v2/activities`. Now you will need to back-fill activity 2 in the same way as you did activity 1 in the previous step. Example request body:
 
@@ -137,7 +137,7 @@ You will receive a response containing a redirect url which, when followed, will
 }
 ```
 
-7. Create activities: POST request to `/funnel/v2/activities`. To enable the client to begin at activity 3 we require you to create an activity where the status is set to Open. Example request body:
+7. POST request to `/funnel/v2/activities`. To enable the client to begin at activity 3 we require you to create an activity where the status is set to Open. Example request body:
 
 ```json
 {
@@ -146,6 +146,6 @@ You will receive a response containing a redirect url which, when followed, will
 }
 ```
 
-**Note**:  `templateId` is set to the `id` for activity 3 received in the previous step.
+   **Note:**  `templateId` is set to the `id` for activity 3 received in the previous step.
 
 8. Redirect the client using the redirect url you received in step 3.
