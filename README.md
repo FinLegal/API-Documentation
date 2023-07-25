@@ -23,7 +23,9 @@ Refer to our [walk-through guide for common API use cases](UseCasesWalkthrough_V
 
 ## Webhooks
 
-[Documentation](OutgoingWebhooks.md)
+Webhooks are HTTP-callbacks that can be used to notify you of a change to the data we hold. [Follow this guide](outgoing-webhooks.md) for details on what & when webhooks can be configured and the payload that is sent.
+
+Typically customers configure webhooks to notify them of new or updated data then use the payload to query our API for further information.
 
 ## Testing with Postman
 
