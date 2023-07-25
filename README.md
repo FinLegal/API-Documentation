@@ -1,6 +1,6 @@
 # API Samples and Documentation
 
-This repository contains some code samples and notes for the CaseFunnel public API. The main REST documentation should be considered the primary reference.
+This repository contains code samples and notes for our public API. The [API specification](#rest-api-specification) should be considered the primary reference.
 
 ## URLs
 
@@ -10,15 +10,13 @@ This repository contains some code samples and notes for the CaseFunnel public A
 - <https://api.casefunnel.co> - deprecated.  Do Not Use.  Alternate URL for London.
 - <https://api.casefunnel.io> - deprecated.  Do Not Use.  Alternate URL for London.
 
-## Introduction
+## Getting Started
 
-Refer to our [walk-through guide for common use cases](UseCasesWalkthrough_V2.md) using the V2 of the API to get started.
+Refer to our [walk-through guide for common API use cases](UseCasesWalkthrough_V2.md) to get started. [Concepts and data](concepts-and-data-v2.md) provides guidance on the data model exposed by the API.
 
-[Concepts and data](concepts-and-data-v2.md) provides an overview of the Casefunnel data model for cases with the V2 API.
+(Deprecated) For an overview of the data model, used by API V1, [follow this guide](concepts-and-data-v1.md).
 
-(Deprecated) For an overview of the Casefunnel data model for cases with the V1 API [follow this guide](concepts-and-data-v1.md).
-
-## [Rest] API specification
+## [Rest] API Specification
 
 - [V2 (Current)](https://api.uk.casefunnel.io/docs/index.html?urls.primaryName=CaseFunnel%20Case%20API%20V2)
 - [V1 (Deprecated)](https://api.uk.casefunnel.io/docs/index.html?urls.primaryName=CaseFunnel%20Case%20API%20V1)

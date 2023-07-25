@@ -2,7 +2,7 @@
 
 **Note:** The below use case examples are relevant for API v2 ONLY: <https://api.uk.casefunnel.io/docs/index.html?urls.primaryName=CaseFunnel%20Case%20API%20V2>
 
-Here are a few common scenarios that consumers of our API typically implement. The aim here is to provide examples of the order in which API calls are to  made to satisfy basic use cases. As an integrator you will work with a FinLegal customer to define the use case(s) before implementing any API calls.
+Here are a few common scenarios that consumers of our API typically implement. The aim here is to provide examples of the order in which API calls are to be  made to satisfy basic use cases. As an integrator you will work with a FinLegal customer to define the use case(s) before implementing any API calls.
 
 For the purposes of this walkthrough we will use the following fictitious claim:
 
