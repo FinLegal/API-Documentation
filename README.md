@@ -12,11 +12,13 @@ This repository contains code samples and notes for our public API. The [API spe
 
 ## Getting Started
 
-Refer to our [walk-through guide for common API use cases](UseCasesWalkthrough_V2.md) to get started. [Concepts and data](concepts-and-data-v2.md) provides guidance on the data model exposed by the API.
+Refer to our [walk-through guide for common API use cases](UseCasesWalkthrough_V2.md) to get started. [Concepts and data](concepts-and-data-v2.md) provides guidance on the resources exposed by the API.
 
-(Deprecated) For an overview of the data model, used by API V1, [follow this guide](concepts-and-data-v1.md).
+(Deprecated) For an overview of the resources used by API V1, [follow this guide](concepts-and-data-v1.md).
 
-## [Rest] API Specification
+## Rest API Reference
+
+The REST API reference documentation describes the HTTP method, path, and parameters for every operation. It also displays example requests and responses for each operation. We use the Swagger framework to generate this documentation.
 
 - [V2 (Current)](https://api.uk.casefunnel.io/docs/index.html?urls.primaryName=CaseFunnel%20Case%20API%20V2)
 - [V1 (Deprecated)](https://api.uk.casefunnel.io/docs/index.html?urls.primaryName=CaseFunnel%20Case%20API%20V1)
