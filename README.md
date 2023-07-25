@@ -1,6 +1,6 @@
 # API Samples and Documentation
 
-This repository contains code samples and notes for our public API. The [API specification](#rest-api-specification) should be considered the primary reference.
+This repository contains code samples and notes for our public API. The [API reference](#rest-api-reference) should be considered the primary reference.
 
 ## URLs
 
