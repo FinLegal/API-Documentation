@@ -14,7 +14,7 @@ Concepts:
 Data:
 
 - Contact Properties
-- Attributes
+- Attributes (Claim, Case, Contact)
 - Attribute Types
 - Claim Data
 
