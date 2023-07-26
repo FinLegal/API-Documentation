@@ -124,7 +124,7 @@ In the response you will receive a `clientId`. You may want to save this in your
 }
 ```
 
-    **Note**: `activityAttributeTemplateId` is set to the `id` for the attribute you wish to set. The attribute is listed in the `activityAttributeTemplates` section of the response received in step 2. See the attributes: Attribute 1-1 & Attribute 1-2.
+**Note**: `activityAttributeTemplateId` is set to the `id` for the attribute you wish to set. The attribute is listed in the `activityAttributeTemplates` section of the response received in step 2. See the attributes: Attribute 1-1 & Attribute 1-2.
 
 6. POST request to `/funnel/v1/cases/{caseId}/clients/{clientId}/activities`. Now you will need to back-fill activity 2 in the same way as you did activity 1 in the previous step. Example request body:
 
