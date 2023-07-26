@@ -6,19 +6,21 @@ Here are a few common scenarios that consumers of our API typically implement. T
 
 For the purposes of this walkthrough we will use the following fictitious claim:
 
-* Our claim contains three activities
-* Activities are configured in a workflow where: Activity 1 -> Activity 2
-* Activity 3 is assigned, by a case handler, as and when it is required and is not assigned through workflow
+* A single claim is created for a client.
+* Our claim contains three activities.
+* Activities are configured in a workflow where: Activity 1 -> Activity 2.
+* Activity 3 is assigned, by a case handler, as and when it is required and is not assigned through workflow.
+* Activities 1, 2 & 3 are claim activities.
 
 **Note:** All id's (uuid's) shown in the examples below are fictitious. And also be aware id's are environment & claim specific.
 
-## Use Case: Capturing basic claimant information & redirecting them to step 1 of the claims process
+## Use Case 1: Capturing basic client information & redirecting them to step 1 of the claims process
 
 *Expectation:* You have captured some basic information about the client (email & name) & now wish to refer them to a claims site so they complete the remaining three activities of the claim.
 
 1. Create a Contact: POST request to `/funnel/v2/contacts?isAdministrator=true` **Note:** A Contact should by default be an administrator.
 2. Create a Claim: POST request to `/funnel/v2/claims`
-3. Create Activity 1: POST request to: `/funnel/v2/activities?claimId={claimId}&contactId={contactId}` **Note:** Either create a Contact OR a Claim activity.
+3. Create Activity 1: POST request to: `/funnel/v2/activities?claimId={claimId}`.
 4. Create Magic Link for redirect: POST request to: `/funnel/v2/contacts/{contactId}/magic-link`
 You will receive a response containing a redirect url which, when followed, will enable the client to begin the claims process at the first Open activity
 
@@ -29,10 +31,10 @@ You will receive a response containing a redirect url which, when followed, will
 * You may want to save both `contactID` and `claimID`s to your record system if you wish to push more data into FinLegal or if you need to track activity completion by the claimant (via e.g. webhooks or GTM).
 * The `contactId` can also be identified using the following API endpoints:
 
-* `GET /funnel/v2/contacts/by-email/{email}`
-* `GET /funnel/v2/contacts/by-phone/{phone}`
+  * `GET /funnel/v2/contacts/by-email/{email}`
+  * `GET /funnel/v2/contacts/by-phone/{phone}`
 
-## Use Case: Creating a client & redirecting them to step 3 of the claims process
+## Use Case 2: Creating a claim & redirecting them to step 3 of that claim
 
 *Expectation:* You have captured personal details about a claimant and details about the claim to satisfy activities 1 & 2 of the claim. You have agreed with a FinLegal customer that the client will resume at activity 3.
 
@@ -149,3 +151,14 @@ You will receive a response containing a redirect url which, when followed, will
    **Note:**  `templateId` is set to the `id` for activity 3 received in the previous step.
 
 8. Redirect the client using the redirect url you received in step 3.
+
+## Use Case 3: Creating several claims for the same client & redirecting them to step 1 of the claims process
+
+We need to revisit our fictious claim.
+
+* Three claims are created for the same client.
+* Each claim contains a single activity.
+* Activities are configured in a workflow where: Activity 1 -> 3 x Activity 2 -> Activity 3.
+* Activities 1 & 3 are case activities and Activity 2 is a claim activity.
+
+*Expectation:* You have captured some basic information about the client (email & name) & now wish to refer them to a claims site so they complete the remaining three activities of the claim.
