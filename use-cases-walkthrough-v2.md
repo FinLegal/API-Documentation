@@ -181,12 +181,12 @@ See note on [attribute data types](#attribute-data-types) & [which Ids to use](#
 6. Create Magic Link for redirect: POST request to: `/funnel/v2/contacts/{contactId}/magic-link`.
 You will receive a response containing a redirect url which, when followed, will enable the client to begin the claims process at the first Open activity.
 
-See [Additional items to consider](#additional-items-to-consider).
+See [additional items to consider](#additional-items-to-consider).
 
 
 ## Use Case 3: Creating several claims for the same client & redirecting them to step 3 of the claims process
 
-We need to revisit our fictitious claim.
+We need to revisit our fictitious scenario.
 
 * A client will register n number of claims, each representing a loss they have suffered. In this example we will register 2 claims.
 * Each claim contains a single activity.
@@ -259,4 +259,4 @@ See note on [attribute data types](#attribute-data-types) & [which Ids to use](#
 8. Create Magic Link for redirect: POST request to: `/funnel/v2/contacts/{contactId}/magic-link`.
 You will receive a response containing a redirect url which, when followed, will enable the client to begin the claims process at the first Open activity.
 
-See [Additional items to consider](#additional-items-to-consider).
+See [additional items to consider](#additional-items-to-consider).
