@@ -12,38 +12,11 @@ For the purposes of this walkthrough we will use the following fictitious claim:
 * Activity 3 is assigned, by a case handler, as and when it is required and is not assigned through workflow.
 * Activities 1, 2 & 3 are claim activities.
 
-**Note:** All id's (uuid's) shown in the examples below are fictitious. And also be aware id's are environment & claim specific.
+**Note:** All id's (uuid's) shown in the examples below are fictitious. And also be aware id's are environment & claim specific. Some data properties have been removed for brevity.
 
-## Use Case 1: Capturing basic client information & redirecting them to step 1 of the claims process
+#### Request to get Reference Data
 
-*Expectation:* You have captured some basic information about the client (email & name) & now wish to refer them to a claims site so they complete the remaining three activities of the claim.
-
-1. Create a Contact: POST request to `/funnel/v2/contacts?isAdministrator=true` **Note:** A Contact should by default be an administrator.
-2. Create a Claim: POST request to `/funnel/v2/claims`
-3. Create Activity 1: POST request to: `/funnel/v2/activities?claimId={claimId}`.
-4. Create Magic Link for redirect: POST request to: `/funnel/v2/contacts/{contactId}/magic-link`
-You will receive a response containing a redirect url which, when followed, will enable the client to begin the claims process at the first Open activity
-
-### Additional items to consider
-
-* In the response to the first POST (1.) you will receive a `contactID`. This `contactID` must be used to create a claim (2.).
-* In the response to the second POST (2.) you will receive a `claimID`.
-* You may want to save both `contactID` and `claimID`s to your record system if you wish to push more data into FinLegal or if you need to track activity completion by the claimant (via e.g. webhooks or GTM).
-* The `contactId` can also be identified using the following API endpoints:
-
-  * `GET /funnel/v2/contacts/by-email/{email}`
-  * `GET /funnel/v2/contacts/by-phone/{phone}`
-
-## Use Case 2: Creating a claim & redirecting them to step 3 of that claim
-
-*Expectation:* You have captured personal details about a claimant and details about the claim to satisfy activities 1 & 2 of the claim. You have agreed with a FinLegal customer that the client will resume at activity 3.
-
-1. Create a Contact: POST request to `/funnel/v2/contacts`
-2. Create a Claim: POST request to `/funnel/v2/claims`,
-3. Create Magic Link for redirect: POST request to: `/funnel/v2/contacts/{contactId}/magic-link`. Keep hold of this URL - you will not need it quite yet.
-4. Capture Activity template IDs: GET request to `/funnel/v2/activity-templates`. Keep hold of this response as you will need to refer to it several times in the following steps.
-
-   **Note:** Some data properties have been removed for brevity.
+Capture Activity template IDs: GET request to `/funnel/v2/activity-templates`. Keep hold of this response as you will need to refer to it several times in the following steps.
 
 ```json
 [
@@ -92,7 +65,13 @@ You will receive a response containing a redirect url which, when followed, will
 ]
 ```
 
-5. POST request to `/funnel/v2/activities`. Making this request will enable you to create activity 1 in CaseFunnel. As you are back-filling an activity you will need to also include any attributes as per the example below. CaseFunnel requires that you use the Submitted status to indicate this is a completed activity. Example request body:
+## Use Case 1: Capturing basic client information & redirecting them to step 1 of the claims process
+
+*Expectation:* You have captured some basic information about the client (email & name) & now wish to refer them to a claims site so they complete the remaining three activities of the claim.
+
+1. Create a Contact: POST request to `/funnel/v2/contacts?isAdministrator=true` **Note:** A Contact should by default be an administrator.
+2. Create a Claim: POST request to `/funnel/v2/claims`
+3. Create Activity 1: POST request to `/funnel/v2/activities?claimId={claimId}`. Making this request will enable you to create activity 1 in CaseFunnel. As you are back-filling an activity you will need to also include any attributes as per the example below. CaseFunnel requires that you use the `Submitted` status to indicate this is a completed activity. Example request body:
 
 ```json
 {
@@ -111,16 +90,63 @@ You will receive a response containing a redirect url which, when followed, will
 }
 ```
 
-   **Note:** Attribute values vary based on the different data types they are:
+**Note:** Attribute values vary based on the different data types they are:
 
 * `stringValue` Text, TextArea, DropDown,
 * `booValue` Checkbox
 * `dateTimeValue` Date, DateTime
 * `doubleValue` Number, Currency
 
-   **Note:** Root `templateId` is set to the `id` for the activity template you wish to set, nested `templateId` is an Id of Attribute Template. The attribute is listed in the `activityAttributeTemplates` section of the response received in step 2. See the attributes: Attribute 1-1 & Attribute 1-2.
+**Note:** Root `templateId` is set to the `id` for the activity template you wish to set, nested `templateId` is an Id of Attribute Template. The attribute is listed in the `activityAttributeTemplates` section of the [reference data retrieved earlier](#request-to-get-referenced-data). See Attribute 1-1 & Attribute 1-2.
 
-6. POST request to `/funnel/v2/activities`. Now you will need to back-fill activity 2 in the same way as you did activity 1 in the previous step. Example request body:
+4. Create Magic Link for redirect: POST request to: `/funnel/v2/contacts/{contactId}/magic-link`
+You will receive a response containing a redirect url which, when followed, will enable the client to begin the claims process at the first Open activity
+
+### Additional items to consider
+
+* In the response to the first POST (1.) you will receive a `contactId`. This `contactId` must be used to create a claim (2.).
+* In the response to the second POST (2.) you will receive a `claimId`.
+* You may want to save both `contactId` and `claimId`s to your record system if you wish to push more data into FinLegal or if you need to track activity completion by the claimant (via e.g. webhooks or GTM).
+* The `contactId` can also be identified using the following API endpoints:
+
+  * `GET /funnel/v2/contacts/by-email/{email}`
+  * `GET /funnel/v2/contacts/by-phone/{phone}`
+
+## Use Case 2: Creating a claim & redirecting them to step 3 of that claim
+
+*Expectation:* You have captured personal details about a claimant and details about the claim to satisfy activities 1 & 2 of the claim. You have agreed with a FinLegal customer that the client will resume at activity 3.
+
+1. Create a Contact: POST request to `/funnel/v2/contacts?isAdministrator=true` **Note:** A Contact should by default be an administrator.
+3. Create a Claim: POST request to `/funnel/v2/claims`.
+4. Create Activity 1: POST request to `/funnel/v2/activities?claimId={claimId}`. Making this request will enable you to create activity 1 in CaseFunnel. As you are back-filling an activity you will need to also include any attributes as per the example below. CaseFunnel requires that you use the `Submitted` status to indicate this is a completed activity. Example request body:
+
+```json
+{
+  "templateId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", # Activity Template Id
+  "status": "Submitted",
+  "attributes": [
+    {
+      "templateId": "8c31c71a-0959-4926-9e0e-2cbcbf1cb574", # Activity Attribute Template Id
+      "stringValue": "Lorem ipsum dolor"
+    },
+    {
+      "templateId": "c9634a59-a14c-4554-b1c4-a1569b740739", # Activity Attribute Template Id
+      "stringValue": "Dolor ipsum"
+    }
+  ],
+}
+```
+
+**Note:** Attribute values vary based on the different data types they are:
+
+* `stringValue` Text, TextArea, DropDown,
+* `booValue` Checkbox
+* `dateTimeValue` Date, DateTime
+* `doubleValue` Number, Currency
+
+**Note:** Root `templateId` is set to the `id` for the activity template you wish to set, nested `templateId` is an Id of Attribute Template. The attribute is listed in the `activityAttributeTemplates` section of the [reference data retrieved earlier](#request-to-get-referenced-data). See Attribute 1-1 & Attribute 1-2.
+
+6. Create Activity 2: POST request to `/funnel/v2/activities?claimId={claimId}`. Now you will need to back-fill activity 2 in the same way as you did activity 1 in the previous step. Example request body:
 
 ```json
 {
@@ -139,18 +165,20 @@ You will receive a response containing a redirect url which, when followed, will
 }
 ```
 
-7. POST request to `/funnel/v2/activities`. To enable the client to begin at activity 3 we require you to create an activity where the status is set to Open. Example request body:
+7. Create Activity 3: POST request to `/funnel/v2/activities?claimId={claimId}`. To enable the client to begin at activity 3 we require you to create an activity where the status is set to `Open`. Example request body:
 
 ```json
 {
-  "activityTemplateId": "04f907e7-07b7-4c13-92f9-d7501b9936c4",
+  "templateId": "04f907e7-07b7-4c13-92f9-d7501b9936c4",
   "status": "Open"
 }
 ```
 
-   **Note:**  `templateId` is set to the `id` for activity 3 received in the previous step.
+**Note:**  `templateId` is set to the `id` for activity 3 received in the previous step.
 
-8. Redirect the client using the redirect url you received in step 3.
+8. Create Magic Link for redirect: POST request to: `/funnel/v2/contacts/{contactId}/magic-link`.
+You will receive a response containing a redirect url which, when followed, will enable the client to begin the claims process at the first Open activity.
+
 
 ## Use Case 3: Creating several claims for the same client & redirecting them to step 1 of the claims process
 
