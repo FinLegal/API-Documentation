@@ -110,9 +110,7 @@ You will receive a response containing a redirect url which, when followed, will
 
 #### Additional items to consider
 
-* In the response to the first POST (1.) you will receive a `contactId`. This `contactId` must be used to create a claim (2.).
-* In the response to the second POST (2.) you will receive a `claimId`.
-* You may want to save both `contactId` and `claimId`s to your record system if you wish to push more data into FinLegal or if you need to track activity completion by the claimant (via e.g. webhooks or GTM).
+* You may want to save both `contactId` and `claimId` to your record system if you wish to push more data into FinLegal or if you need to track activity completion by the claimant (via e.g. webhooks or GTM).
 * The `contactId` can also be identified using the following API endpoints:
 
   * `GET /funnel/v2/contacts/by-email/{email}`
