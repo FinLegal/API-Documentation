@@ -72,7 +72,18 @@ Capture Activity template Ids: GET request to `/funnel/v2/activity-templates`. K
 
    **Note:** By default, a Contact should be an administrator.
 
-2. Create a Claim: POST request to `/funnel/v2/claims`
+2. Create a Claim: POST request to `/funnel/v2/claims`. A successful response will contain a `claimId`. Hold on to this as it will be used in subsequent requests. It will be referenced as `{claimId}` in the examples.
+
+```json
+{
+  "administratorId": "{contactId}",
+  "claimants": [
+    "{contactId}"
+  ],
+  "claimName": "Joe Bloggs 23/ABC" # Value to be agreed with Finlegal customer
+}
+```
+
 3. Create Activity 1: POST request to `/funnel/v2/activities?claimId={claimId}`. Making this request will enable you to create activity 1 in CaseFunnel. As you are back-filling an activity you will need to also include any attributes as per the example below. CaseFunnel requires that you use the `Submitted` status to indicate this is a completed activity. Example request body:
 
 ```json
@@ -124,7 +135,18 @@ You will receive a response containing a redirect url which, when followed, will
 
    **Note:** By default, a Contact should be an administrator.
 
-2. Create a Claim: POST request to `/funnel/v2/claims`.
+2. Create a Claim: POST request to `/funnel/v2/claims`. A successful response will contain a `claimId`. Hold on to this as it will be used in subsequent requests. It will be referenced as `{claimId}` in the examples.
+
+```json
+{
+  "administratorId": "{contactId}",
+  "claimants": [
+    "{contactId}"
+  ],
+  "claimName": "Joe Bloggs 23/ABC" # Value to be agreed with Finlegal customer
+}
+```
+
 3. Create Activity 1: POST request to `/funnel/v2/activities?claimId={claimId}`. Making this request will enable you to create activity 1 in CaseFunnel. As you are back-filling an activity you will need to also include any attributes as per the example below. CaseFunnel requires that you use the `Submitted` status to indicate this is a completed activity. Example request body:
 
 ```json
@@ -220,6 +242,16 @@ See note on [attribute data types](#attribute-data-types) & [which Ids to use](#
 
 3. Create Claim 1: POST request to `/funnel/v2/claims`. A successful response will contain a `claimId`. Hold on to this as it will be used in subsequent requests. It will be referenced as `{claimId1}` in the examples.
 
+```json
+{
+  "administratorId": "{contactId}",
+  "claimants": [
+    "{contactId}"
+  ],
+  "claimName": "Joe Bloggs 23/ABC-1" # Value to be agreed with Finlegal customer
+}
+```
+
 4. Create Activity 2 for Claim 1: POST request to `/funnel/v2/activities?claimId={claimId1}`. Now you will need to back-fill activity 2 in the same way as you did activity 1 in the previous step. Example request body:
 
 ```json
@@ -240,6 +272,16 @@ See note on [attribute data types](#attribute-data-types) & [which Ids to use](#
 ```
 
 5. Create Claim 2: POST request to `/funnel/v2/claims`. A successful response will contain a `claimId`. Hold on to this as it will be used in subsequent requests. It will be referenced as `{claimId2}` in the examples.
+
+```json
+{
+  "administratorId": "{contactId}",
+  "claimants": [
+    "{contactId}"
+  ],
+  "claimName": "Joe Bloggs 23/ABC-2" # Value to be agreed with Finlegal customer
+}
+```
 
 6. Create Activity 2 for Claim 2: POST request to `/funnel/v2/activities?claimId={claimId2}`. Now you will need to back-fill activity 2 in the same way as you did activity 1 in the previous step.
 
