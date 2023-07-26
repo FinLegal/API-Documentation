@@ -70,7 +70,7 @@ Capture Activity template Ids: GET request to `/funnel/v2/activity-templates`. K
 
 1. Create a Contact: POST request to `/funnel/v2/contacts?isAdministrator=true`.  A successful response will contain a `contactId`. Hold on to this as it will be used in subsequent requests. It will be referenced as `{contactId}` in the examples.
 
-**Note:** By default, a Contact should be an administrator.
+   **Note:** By default, a Contact should be an administrator.
 
 2. Create a Claim: POST request to `/funnel/v2/claims`
 3. Create Activity 1: POST request to `/funnel/v2/activities?claimId={claimId}`. Making this request will enable you to create activity 1 in CaseFunnel. As you are back-filling an activity you will need to also include any attributes as per the example below. CaseFunnel requires that you use the `Submitted` status to indicate this is a completed activity. Example request body:
@@ -124,7 +124,7 @@ You will receive a response containing a redirect url which, when followed, will
 
 1. Create a Contact: POST request to `/funnel/v2/contacts?isAdministrator=true`. A successful response will contain a `contactId`. Hold on to this as it will be used in subsequent requests. It will be referenced as `{contactId}` in the examples.
 
-**Note:** By default, a Contact should be an administrator.
+   **Note:** By default, a Contact should be an administrator.
 
 2. Create a Claim: POST request to `/funnel/v2/claims`.
 3. Create Activity 1: POST request to `/funnel/v2/activities?claimId={claimId}`. Making this request will enable you to create activity 1 in CaseFunnel. As you are back-filling an activity you will need to also include any attributes as per the example below. CaseFunnel requires that you use the `Submitted` status to indicate this is a completed activity. Example request body:
@@ -176,12 +176,12 @@ See note on [attribute data types](#attribute-data-types) & [which Ids to use](#
 }
 ```
 
-**Note:**  `templateId` is set to the `id` for activity 3 received in the previous step.
+**Note:**  `templateId` is set to the `id` for activity 3 in the [reference data retrieved earlier](#request-to-get-reference-data).
 
 6. Create Magic Link for redirect: POST request to: `/funnel/v2/contacts/{contactId}/magic-link`.
 You will receive a response containing a redirect url which, when followed, will enable the client to begin the claims process at the first Open activity.
 
-See [Additional items to consider][#additional-items-to-consider].
+See [Additional items to consider](#additional-items-to-consider).
 
 
 ## Use Case 3: Creating several claims for the same client & redirecting them to step 3 of the claims process
@@ -197,7 +197,7 @@ We need to revisit our fictitious claim.
 
 1. Create a Contact: POST request to `/funnel/v2/contacts?isAdministrator=true`. A successful response will contain a `contactId`. Hold on to this as it will be used in subsequent requests. It will be referenced as `{contactId}` in the examples.
 
-**Note:** By default, a Contact should be an administrator.
+   **Note:** By default, a Contact should be an administrator.
 
 2. Create Activity 1: POST request to `/funnel/v2/activities?contactId={contactId}`. Making this request will enable you to create activity 1 in CaseFunnel. As you are back-filling an activity you will need to also include any attributes as per the example below. CaseFunnel requires that you use the `Submitted` status to indicate this is a completed activity. Example request body:
 
@@ -259,4 +259,4 @@ See note on [attribute data types](#attribute-data-types) & [which Ids to use](#
 8. Create Magic Link for redirect: POST request to: `/funnel/v2/contacts/{contactId}/magic-link`.
 You will receive a response containing a redirect url which, when followed, will enable the client to begin the claims process at the first Open activity.
 
-See [Additional items to consider][#additional-items-to-consider].
+See [Additional items to consider](#additional-items-to-consider).
