@@ -1,6 +1,6 @@
 ## Overview 
 
-This is intended for V1.  For V2 and more details see [Concepts and Data](concepts-and-data.md)
+This is intended for V1.  For V2 and more details see [Concepts and Data](concepts-and-data-v2.md)
 
 The example code provides the ability to return a given client by email address. 
 

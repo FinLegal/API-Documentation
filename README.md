@@ -1,6 +1,6 @@
 # API Samples and Documentation
 
-This repository contains some code samples and notes for the CaseFunnel public API. The main REST documentation should be considered the primary reference.
+This repository contains code samples and notes for our public API. The [API reference](#rest-api-reference) should be considered the primary reference.
 
 ## URLs
 
@@ -10,20 +10,24 @@ This repository contains some code samples and notes for the CaseFunnel public A
 - <https://api.casefunnel.co> - deprecated.  Do Not Use.  Alternate URL for London.
 - <https://api.casefunnel.io> - deprecated.  Do Not Use.  Alternate URL for London.
 
-## Introduction
+## Getting Started
 
-[Intro](Intro.md) provides a brief overview of the main Casefunnel resources available via the API. Refer to our [walk-through guide for common use cases](UseCasesWalkthrough_V2.md) using the V2 of the API to get started.
+Refer to our [walk-through guide for common API use cases](use-cases-walkthrough-v2.md) to get started. [Concepts and data](concepts-and-data-v2.md) provides guidance on the resources exposed by the API.
 
-[Concepts and Data](concepts-and-data.md) provides an overview of the Casefunnel data model for Cases with the V2 API.
+(Deprecated) For an overview of the resources used by API V1, [follow this guide](concepts-and-data-v1.md).
 
-## REST documentation
+## Rest API Reference
+
+The REST API reference documentation describes the HTTP method, path, and parameters for every operation. It also displays example requests and responses for each operation. We use the Swagger framework to generate this documentation.
 
 - [V2 (Current)](https://api.uk.casefunnel.io/docs/index.html?urls.primaryName=CaseFunnel%20Case%20API%20V2)
 - [V1 (Deprecated)](https://api.uk.casefunnel.io/docs/index.html?urls.primaryName=CaseFunnel%20Case%20API%20V1)
 
-## Outgoing Webhook information
+## Webhooks
 
-[Documentation](OutgoingWebhooks.md)
+Webhooks are HTTP-callbacks that can be used to notify you of a change to the data we hold. [Follow this guide](outgoing-webhooks.md) for details on what & when webhooks can be configured and the payload that is sent.
+
+Typically customers configure webhooks to notify them of new or updated data then use the payload to query our API for further information.
 
 ## Testing with Postman
 
