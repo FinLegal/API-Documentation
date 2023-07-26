@@ -219,3 +219,44 @@ We need to revisit our fictitious claim.
 ```
 
 See note on [attribute data types](#attribute-data-types) & [which Ids to use](#attribute-ids).
+
+3. Create Claim 1: POST request to `/funnel/v2/claims`. A successful response will contain a `claimId`. Hold on to this as it will be used in subsequent requests. It will be referenced as `{claimId1}` in the examples.
+
+4. Create Activity 2 for Claim 1: POST request to `/funnel/v2/activities?claimId={claimId1}`. Now you will need to back-fill activity 2 in the same way as you did activity 1 in the previous step. Example request body:
+
+```json
+{
+  "templateId": "f24044b5-3ba5-4356-a3c0-301bdd4f9379",
+  "status": "Submitted",
+  "attributes": [
+    {
+      "templateId": "22697147-5af4-43a8-8719-fecbc5eb083e",
+      "dateTimeValue": "2021-04-13T06:44:42.322Z",
+    },
+    {
+      "templateId": "f6322b5b-387a-4203-af32-09eac9a92859",
+      "stringValue": "2017-09-08T19:01:55.0+03:00"
+    }
+  ],
+}
+```
+
+5. Create Claim 2: POST request to `/funnel/v2/claims`. A successful response will contain a `claimId`. Hold on to this as it will be used in subsequent requests. It will be referenced as `{claimId2}` in the examples.
+
+6. Create Activity 2 for Claim 2: POST request to `/funnel/v2/activities?claimId={claimId2}`. Now you will need to back-fill activity 2 in the same way as you did activity 1 in the previous step.
+
+7. Create Activity 3: POST request to `/funnel/v2/activities?contactId={contactId}`. To enable the client to begin at activity 3 we require you to create an activity where the status is set to `Open`. Example request body:
+
+```json
+{
+  "templateId": "04f907e7-07b7-4c13-92f9-d7501b9936c4",
+  "status": "Open"
+}
+```
+
+**Note:**  `templateId` is set to the `id` for activity 3 in the [reference data retrieved earlier](#request-to-get-reference-data).
+
+8. Create Magic Link for redirect: POST request to: `/funnel/v2/contacts/{contactId}/magic-link`.
+You will receive a response containing a redirect url which, when followed, will enable the client to begin the claims process at the first Open activity.
+
+See [Additional items to consider][#additional-items-to-consider].
