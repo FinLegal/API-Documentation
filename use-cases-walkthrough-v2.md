@@ -84,7 +84,7 @@ Capture Activity template Ids: GET request to `/funnel/v2/activity-templates`. K
 }
 ```
 
-3. Create Activity 1: POST request to `/funnel/v2/activities?claimId={claimId}`. Making this request will enable you to create activity 1 in CaseFunnel. As you are back-filling an activity you will need to also include any attributes as per the example below. CaseFunnel requires that you use the `Submitted` OR `Accpeted` status to indicate this is a completed activity. (Your FinLegal contact will specify the status per activity).  Example request body:
+3. Create Activity 1: POST request to `/funnel/v2/activities?claimId={claimId}`. Making this request will enable you to create activity 1 in CaseFunnel. As you are back-filling an activity you will need to also include any attributes as per the example below. CaseFunnel requires that you use the `Submitted` OR `Accepted` status to indicate this is a completed activity. (Your FinLegal contact will specify the status per activity).  Example request body:
 
 ```json
 {
