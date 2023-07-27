@@ -147,7 +147,7 @@ You will receive a response containing a redirect url which, when followed, will
 }
 ```
 
-3. Create Activity 1: POST request to `/funnel/v2/activities?claimId={claimId}`. Making this request will enable you to create activity 1 in CaseFunnel. As you are back-filling an activity you will need to also include any attributes as per the example below. CaseFunnel requires that you use the `Submitted` status to indicate this is a completed activity. Example request body:
+3. Create Activity 1: POST request to `/funnel/v2/activities?claimId={claimId}`. Making this request will enable you to create activity 1 in CaseFunnel. As you are back-filling an activity you will need to also include any attributes as per the example below. CaseFunnel requires that you use the `Submitted` OR `Accepted` status to indicate this is a completed activity. (Your FinLegal contact will specify the status per activity). Example request body:
 
 ```json
 {
