@@ -108,7 +108,7 @@ Capture Activity template Ids: GET request to `/funnel/v2/activity-templates`. K
 **Note:** Attribute values vary based on the different data types they are:
 
 * `stringValue` Text, TextArea, DropDown,
-* `booValue` Checkbox
+* `boolValue` Checkbox
 * `dateTimeValue` Date, DateTime
 * `doubleValue` Number, Currency
 
